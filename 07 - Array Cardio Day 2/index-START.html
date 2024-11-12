@@ -28,34 +28,67 @@
 
     // Some and Every Checks
     // Array.prototype.some() // is at least one person 19 or older?
-    const someoneAdult = people.some((person) => ((new Date()).getFullYear() - person.year) >= 19);
-    console.log({someoneAdult}); // {} in console log also shows name variable
+    let atLeastOne19 = people.some((person) => 2024 - person.year > 18);
+    console.log(atLeastOne19);
+
     // Array.prototype.every() // is everyone 19 or older?
-    const everyoneAdult = people.every((person) => (new Date().getFullYear() - person.year) >= 19);
-    console.log({everyoneAdult});
+    let all19 = people.every((person) => 2024 - person.year > 18);
+    console.log(all19);
+
 
     // Array.prototype.find()
     // Find is like filter, but instead returns just the one you are looking for
     // find the comment with the ID of 823423
-    const findID = comments.find((comment) => comment.id === 823423);
-    console.log(findID);
+    let commentID823423 = comments.find((comment) => comment.id == 823423);
+    console.log(commentID823423);
+
 
     // Array.prototype.findIndex()
     // Find the comment with this ID
     // delete the comment with the ID of 823423
     // ALSO POSSIBLE; keep previous array and make new
-    const index = comments.findIndex((comment) => comment.id === 823423);
 
-    const newComments = [
-      ...comments.slice(0, index), // using SPREAD operator
-      ...comments.slice(index + 1) // no 'end of array' indicator; automatically done
-    ];
-    console.table(newComments)
-    console.table(comments);
+
 
     // Or short, when adjusting existing array
-    comments.splice(comments.findIndex((comment) => comment.id === 823423), 1);
     console.table(comments);
+    comments.splice(comments.findIndex((item) => item.id == 823423), 1);
+    console.table(comments);
+
+
+
+
+
+    // // Some and Every Checks
+    // // Array.prototype.some() // is at least one person 19 or older?
+    // const someoneAdult = people.some((person) => ((new Date()).getFullYear() - person.year) >= 19);
+    // console.log({someoneAdult}); // {} in console log also shows name variable
+    // // Array.prototype.every() // is everyone 19 or older?
+    // const everyoneAdult = people.every((person) => (new Date().getFullYear() - person.year) >= 19);
+    // console.log({everyoneAdult});
+
+    // // Array.prototype.find()
+    // // Find is like filter, but instead returns just the one you are looking for
+    // // find the comment with the ID of 823423
+    // const findID = comments.find((comment) => comment.id === 823423);
+    // console.log(findID);
+
+    // // Array.prototype.findIndex()
+    // // Find the comment with this ID
+    // // delete the comment with the ID of 823423
+    // // ALSO POSSIBLE; keep previous array and make new
+    // const index = comments.findIndex((comment) => comment.id === 823423);
+
+    // const newComments = [
+    //   ...comments.slice(0, index), // using SPREAD operator
+    //   ...comments.slice(index + 1) // no 'end of array' indicator; automatically done
+    // ];
+    // console.table(newComments)
+    // console.table(comments);
+
+    // // Or short, when adjusting existing array
+    // comments.splice(comments.findIndex((comment) => comment.id === 823423), 1);
+    // console.table(comments);
 
   </script>
 </body>
