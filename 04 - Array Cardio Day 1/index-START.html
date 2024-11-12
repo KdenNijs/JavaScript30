@@ -36,53 +36,48 @@
       'Berne, Eric', 'Berra, Yogi', 'Berry, Wendell', 'Bevan, Aneurin', 'Ben-Gurion, David', 'Bevel, Ken', 'Biden, Joseph', 'Bennington, Chester', 'Bierce, Ambrose',
       'Billings, Josh', 'Birrell, Augustine', 'Blair, Tony', 'Beecher, Henry', 'Biondo, Frank'
     ];
-    
+
+
+
     // Array.prototype.filter()
     // 1. Filter the list of inventors for those who were born in the 1500's
-    const inventors1500s = inventors.filter((inventr) => inventr.year >= 1500 && inventr.year < 1600);
+    let inventors1500s = inventors.filter((inventor) => inventor.year >= 1500 && inventor.year < 1600);
     console.table(inventors1500s);
+
 
     // Array.prototype.map()
     // 2. Give us an array of the inventors first and last names
-    const fullNames = inventors.map((inventr) => [inventr.first, inventr.last]);
-    console.table(fullNames);
+    let inventorsFullNames = inventors.map((inventor) => [inventor.first, inventor.last]);
+    console.table(inventorsFullNames);
 
-    const fullNames2 = inventors.map((inventr) => `${inventr.first} ${inventr.last}`);
-    console.log(fullNames2);
 
     // Array.prototype.sort()
     // 3. Sort the inventors by birthdate, oldest to youngest
-    const ordered = inventors.sort((a, b) => a.year - b.year); 
-    // const ordered = inventors.sort((a, b) => a.year > b.year ? 1 : -1) // alternative
-    console.table(ordered);
+    let inventorsSortBirth = inventors.sort((inventorA, inventorB) => inventorA.year - inventorB.year)
+    console.table(inventorsSortBirth);
+
 
     // Array.prototype.reduce()
     // 4. How many years did all the inventors live all together?
-    const collectiveYears = inventors.reduce((years, inventr) => years + (inventr.passed - inventr.year), 0);
-    console.log(collectiveYears);
+    let totalYears = inventors.reduce((total, currentItem) => total + (currentItem.passed - currentItem.year), 0);
+    console.log(totalYears);
+
 
     // 5. Sort the inventors by years lived
     // .sort changes order array in-space; toSorted() preserves original array order
-    const oldest = inventors.toSorted((a, b) => (a.passed - a.year) - (b.passed - b.year));
-    console.table(oldest);
+    let inventorsSortOldest = inventors.toSorted((a, b) => (b.passed - b.year) - (a.passed - a.year));
+    console.table(inventorsSortOldest)
+
 
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
-    // THE BELOW DONE IN CONSOLE OF WEB BROWSER
-    /*
-    const category = document.querySelector('mw-category');
-    const links = Array.from(category.querySelectorAll('a')); // convert nodelist to array (otherwise map doesn't work)
 
-    const de = links
-                  .map((link) => link.textContent)
-                  .filter((link) => link.includes('de'));
-    */
 
     // 7. sort Exercise
     // Sort the people alphabetically by last name
-    // !! Not a 'nice object' like in the previous parts; 'regular array'
-    people.sort((a, b) => a.split(', ')[0].localeCompare(b.split(', ')));
-    console.log(people);
+    let peopleSortLastName = people.toSorted((a, b) => a > b);
+    console.log(peopleSortLastName)
+
 
     // 8. Reduce Exercise
     // Sum up the instances of each of these
@@ -95,6 +90,70 @@
               return total;
             }, {});
     console.table(instance);
+
+
+
+
+
+    
+    // // Array.prototype.filter()
+    // // 1. Filter the list of inventors for those who were born in the 1500's
+    // const inventors1500s = inventors.filter((inventr) => inventr.year >= 1500 && inventr.year < 1600);
+    // console.table(inventors1500s);
+
+    // // Array.prototype.map()
+    // // 2. Give us an array of the inventors first and last names
+    // const fullNames = inventors.map((inventr) => [inventr.first, inventr.last]);
+    // console.table(fullNames);
+
+    // const fullNames2 = inventors.map((inventr) => `${inventr.first} ${inventr.last}`);
+    // console.log(fullNames2);
+
+    // // Array.prototype.sort()
+    // // 3. Sort the inventors by birthdate, oldest to youngest
+    // const ordered = inventors.sort((a, b) => a.year - b.year); 
+    // // const ordered = inventors.sort((a, b) => a.year > b.year ? 1 : -1) // alternative
+    // console.table(ordered);
+
+    // // Array.prototype.reduce()
+    // // 4. How many years did all the inventors live all together?
+    // const collectiveYears = inventors.reduce((years, inventr) => years + (inventr.passed - inventr.year), 0);
+    // console.log(collectiveYears);
+
+    // // 5. Sort the inventors by years lived
+    // // .sort changes order array in-space; toSorted() preserves original array order
+    // const oldest = inventors.toSorted((a, b) => (a.passed - a.year) - (b.passed - b.year));
+    // console.table(oldest);
+
+    // // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
+    // // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
+    // // THE BELOW DONE IN CONSOLE OF WEB BROWSER
+    // /*
+    // const category = document.querySelector('mw-category');
+    // const links = Array.from(category.querySelectorAll('a')); // convert nodelist to array (otherwise map doesn't work)
+
+    // const de = links
+    //               .map((link) => link.textContent)
+    //               .filter((link) => link.includes('de'));
+    // */
+
+    // // 7. sort Exercise
+    // // Sort the people alphabetically by last name
+    // // !! Not a 'nice object' like in the previous parts; 'regular array'
+    // people.sort((a, b) => a.split(', ')[0].localeCompare(b.split(', ')));
+    // console.log(people);
+
+    // // 8. Reduce Exercise
+    // // Sum up the instances of each of these
+    // const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
+    // const instance = data.reduce((total, curr) => {
+    //           if (!total[curr]) {
+    //             total[curr] = 0;
+    //           }
+    //           total[curr] ++;
+    //           return total;
+    //         }, {});
+    // console.table(instance);
 
   </script>
 </body>
